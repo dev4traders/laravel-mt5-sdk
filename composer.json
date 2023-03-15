@@ -1,0 +1,63 @@
+{
+    "name": "dev4traders/laravel-mt5-sdk",
+    "description": "SDK to easily work with the MT5 API in Laravel apps",
+    "keywords": [
+        "dev4traders",
+        "laravel",
+        "mt5",
+        "laravel-mt5-sdk"
+    ],
+    "homepage": "https://github.com/dev4traders/laravel-mt5-sdk",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mikhail",
+            "email": "mikha.dev@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "illuminate/contracts": "^9.0",
+        "dev4traders/mt5-sdk-php": "*"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^7.0",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "D4T\\MT5Sdk\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "D4T\\MT5Sdk\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "D4T\\MT5Sdk\\MT5SdkServiceProvider"
+            ],
+            "aliases": {
+                "MT5Manager": "D4T\\MT5Sdk\\Facades\\MT5Manager"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
